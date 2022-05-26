@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends Utility {
     private static final Logger log = LogManager.getLogger(HomePage.class.getName());
+
     public HomePage() {
         PageFactory.initElements(driver, this);
     }
@@ -24,7 +25,12 @@ public class HomePage extends Utility {
     @FindBy(xpath = "//div[@class='uhf-child-content']//a[contains(text(),'Used')]")
     WebElement usedCars;
 
-    public void mouseHoverToBuySellTab(){
+    @CacheLookup
+    @FindBy(xpath = "//a[contains(text(),'Find a Dealer')]")
+    WebElement findDealer;
+
+
+    public void mouseHoverToBuySellTab() {
         mouseHoverToElement(buySellTab);
         log.info("Mouse Hover to Buy+Sell Tab " + buySellTab.toString());
     }
@@ -39,6 +45,10 @@ public class HomePage extends Utility {
         log.info("Click on Used Cars " + usedCars.toString());
     }
 
+    public void clickOnFindDealer() {
+        mouseHoverToElementAndClick(findDealer);
+        log.info("Clicking on 'Find a Dealer' link   " + findDealer.toString());
+    }
 
 
 }
